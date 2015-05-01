@@ -135,7 +135,7 @@ logopos={.04\slidewidth,.19\slideheight}}
 \date{\the\year.\the\month.\the\day}
 \maketitle
 
-\pdsetup{logocmd={\includegraphics[scale=0.05]{figures/thulogo.eps}}}
+\pdsetup{logocmd={\includegraphics[scale=0.05]{thu-fig-logo.pdf}}}
 
 \begin{slide}[toc=, bm=]{目录}
 \tableofcontents[type=1, content=sections]
@@ -154,7 +154,7 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
 \medskip
 
 \centering
-\includegraphics[scale=0.3]{knuth.eps}\hspace{2cm}\includegraphics[scale=0.11]{texbook.eps}
+\includegraphics[scale=0.3]{knuth.png}\hspace{2cm}\includegraphics[scale=0.11]{knuth.png}%texbook.eps
 
 \begin{equation}
 \det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
@@ -175,7 +175,7 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
 \bigskip
 
 \centering
-\includegraphics[scale=0.2]{leslie.eps}\hspace{2cm}\includegraphics[scale=0.16]{latex.eps}
+\includegraphics[scale=0.2]{lamport.png}\hspace{2cm}\scalebox{2}{\LaTeX}
 \end{slide}
 
 \begin{slide}{\thuthesis{} 是什么？}
@@ -203,8 +203,8 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
 \medskip
 
 \centering
-\includegraphics[width=3cm]{master.eps}\hspace{1cm}
-\includegraphics[width=2.6cm]{contents.eps}\\
+\includegraphics[width=3cm]{knuth.png}\hspace{1cm}%master.eps
+\includegraphics[width=2.6cm]{knuth.png}\\%contents.eps
 {\footnotesize 封面}\hspace{3.3cm} {\footnotesize 目录}}
 \end{slide}
 
@@ -221,7 +221,7 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
   \end{itemize}
   \bigskip
 \centering
-\includegraphics[width=3cm]{think.eps}
+\includegraphics[width=3cm]{knuth.png}% think.eps
 \end{slide}
 
 \begin{slide}{为什么是~\TeX ?}
@@ -509,7 +509,7 @@ $ ps2pdf thesis.ps
 \documentclass[12pt]{book}  % 声明模板类型以及相关参数
 
 \author{苏东坡}             % 指定作者
-\title{念奴娇·赤壁怀古}     % 指定文章题目
+\title{念奴娇 赤壁怀古}     % 指定文章题目
 
 \begin{document}            % 指示正文开始
 \maketitle                  % 创建封面
@@ -666,7 +666,7 @@ $ ps2pdf thesis.ps
 \begin{MyVerbatim}
 \begin{figure}
   \centering
-  \includegraphics{thulogo.eps}
+  \includegraphics{thu-fig-logo.pdf}
   \caption{清华校徽。}
   \label{fig:thulogo}
 \end{figure}
@@ -674,7 +674,7 @@ $ ps2pdf thesis.ps
 \end{MyVerbatim}
   \end{minipage}\hfill\pause
   \begin{minipage}{0.4\linewidth}\centering
- \includegraphics[scale=0.1]{thulogo.eps}\\
+ \includegraphics[scale=0.1]{thu-fig-logo.pdf}\\
  {\small 图~1. 清华校徽。}\\[1em]
 清华校徽请参见图~1。    
   \end{minipage}
@@ -850,13 +850,13 @@ $ ps2pdf thesis.ps
 \end{slide}
 
 \begin{slide}{封面样例~(1)}
-\includegraphics[width=4.5cm]{bachelor.eps}\hfill%
-\includegraphics[width=4.5cm]{master.eps}%
+\includegraphics[width=4.5cm]{lamport.png}\hfill%bachelor.eps
+\includegraphics[width=4.5cm]{lamport.png}%master.eps
 \end{slide}
 
 \begin{slide}{封面样例~(2)}
-\includegraphics[width=4.5cm]{doctor.eps}\hfill%
-\includegraphics[width=4.5cm]{doctore.eps}
+\includegraphics[width=4.5cm]{knuth.png}\hfill%doctor.eps
+\includegraphics[width=4.5cm]{knuth.png}%doctore.eps
 \end{slide}
 
 \begin{slide}[method=direct]{字体切换}
@@ -1072,7 +1072,7 @@ proof & corollary & example & exercise &\\
   \end{description}
 
 \medskip
-\includegraphics[scale=0.25]{tsinghua.eps}\hspace{2cm}\includegraphics[scale=0.7]{tsinghua2.eps}
+\includegraphics[scale=0.25]{thu-lib-logo.pdf}\hspace{2cm}\includegraphics[scale=0.7]{thu-lib-logo.pdf}
 \end{slide}
 
 \section[toc=深入~\thuthesis]{一步一步掌握~\thuthesis}
@@ -1208,34 +1208,34 @@ thesis/
 \pause
 \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 定义密级
-\secretlevel{[!red机密]} \secretyear{[!red[2020]]}
+\secretlevel{[机密]} \secretyear{[2020]}
 \end{SaveVerbatim}
 \mytwocolumn<2->{\myitem<2->{密级}}
 \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 定义题目
-\ctitle{[!red清华大学学位论文~\LaTeX\ 模板使用示例文档]}
+\ctitle{[!red[清华大学学位论文~\LaTeX\ 模板使用示例文档]]}
 \etitle{[!red[An Introduction to \LaTeX{}]]
-        [!red[Thesis Template of Tsinghua University]]} 
+        [!red[Thesis Template of Tsinghua University]]}
   \end{SaveVerbatim}
 \mytwocolumn<3->{\myitem<3->{论文题目}}
   \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 作者和导师信息
-\cauthor{[!red薛瑞尼]} 
+\cauthor{[!red[薛瑞尼]]} 
 \eauthor{[!red[Xue Ruini]]} 
-\csupervisor{[!red郑纬民教授]}
+\csupervisor{[!red[郑纬民教授]]}
 \esupervisor{[!red[Professor Zheng Weimin]]} 
-\cassosupervisor{[!red陈文光副教授]}
+\cassosupervisor{[!red[[陈文光副教授]]}
 \eassosupervisor{[!red[Chen Wenguang]]} 
-\ccosupervisor{[!red某某某教授]}
+\ccosupervisor{[!red[[某某某教授]]}
 \ecosupervisor{[!red[I have no]]}
   \end{SaveVerbatim}
 \mytwocolumn<4->{\myitem<4->{作者和导师信息}}
   \begin{SaveVerbatim}[commandchars=!()]{mypause}    
 % 学位与专业信息
-\cdegree{(!red工学博士)} 
+\cdegree{(!red[工学博士])} 
 \edegree{(!red(Doctor of Science))} 
-\cdepartment(!hei!blue[计算机]){(!red计算机科学与技术系)} 
-\cmajor{(!red计算机科学与技术)}
+\cdepartment(!hei!blue[计算机]){(!red[计算机科学与技术系])} 
+\cmajor{(!red[计算机科学与技术])}
 \emajor{(!red(Computer Science and Technology))} 
 \end{SaveVerbatim}
 \mytwocolumn<5->{\myitem<5->{学位与专业}\myitem<6->{日期会自动设置为当前日期\\ (\cmd{cdate}~\cmd{edate})}}
@@ -1485,9 +1485,9 @@ Anything as you like...
   \item 从~\thuthesis{} 示例文档入手
   \item 选择一个好编辑器
     \begin{itemize}
-    \item 初级用户：WinEdt$\ldots$ \includegraphics[scale=0.2]{winedt.eps}
-    \item 进阶用户：Vim (+ \LaTeX Suite) \includegraphics[scale=0.16]{vim.eps}
-    \item 高级用户：Emacs (+ AUC\TeX + preview-\LaTeX) \includegraphics[scale=0.16]{emacs.eps}
+    \item 初级用户：WinEdt$\ldots$ \includegraphics[scale=0.2]{emacs.png}%winedt.eps
+    \item 进阶用户：Vim (+ \LaTeX Suite) \includegraphics[scale=0.16]{emacs.png}%vim.eps
+    \item 高级用户：Emacs (+ AUC\TeX + preview-\LaTeX) \includegraphics[scale=0.16]{emacs.png}
     \end{itemize}
   \end{itemize}
 \end{slide}
@@ -1515,7 +1515,7 @@ Anything as you like...
 \begin{slide}{谢谢！}
 \vspace{\stretch{2}}
 \centering
-  \includegraphics[width=5cm]{Thanks.eps}
+  \includegraphics[width=5cm]{thanks.pdf}
 \vspace{\stretch{3.5}}
 \end{slide}
 \end{CJK*}
