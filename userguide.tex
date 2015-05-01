@@ -1,12 +1,12 @@
-
 %%% Local Variables: 
 %%% mode: latex
 %%% TeX-master: t
 %%% End: 
 
-\documentclass[dvipsnames, svgnames, mode=present, paper=screen, size=9pt,
-style=husky]{powerdot}
-\usepackage{calc}
+\documentclass[dvipsnames, svgnames,
+               mode=present, paper=screen,
+               size=9pt, style=husky]{powerdot}
+\usepackage{ctex}
 \usepackage{amsmath}
 \usepackage{fancybox}
 \usepackage{fancyvrb}
@@ -14,7 +14,6 @@ style=husky]{powerdot}
 \usepackage{mflogo}
 \usepackage{shapepar}
 %\usepackage{fourier}
-\usepackage{CJK,CJKpunct}
 
 \usepackage{tikz}
 %\usepackage{pgflibraryarrows}
@@ -22,66 +21,44 @@ style=husky]{powerdot}
 \usepackage{pstricks}
 \usepackage{pst-node}
 
-\hypersetup{CJKbookmarks=true}
-\makeatletter
- \def\beamer@activecjk{
-    % Activate all >128 characters. 
-    \count@=127
-    \@whilenum\count@<255 \do{%
-      \advance\count@ by 1
-      \lccode`\~=\count@
-      \catcode\count@=\active
-      \lowercase{\def~{\kern1ex}}
-    }
-  } 
-\beamer@activecjk
-\makeatother
+% default figure path
+\graphicspath{{figures/}}
+
+% map ctex font commands
+\let\song=\songti
+\let\fs=\fangsong
+\let\kai=\kaishu
+\let\hei=\heiti
+\let\li=\lishu
+\let\you=\youyuan
+
+\newcommand{\chuhao}{\zihao{0}}
+\newcommand{\xiaochu}{\zihao{-0}}
+\newcommand{\yihao}{\zihao{1}}
+\newcommand{\xiaoyi}{\zihao{-1}}
+\newcommand{\erhao}{\zihao{2}}
+\newcommand{\xiaoer}{\zihao{-2}}
+\newcommand{\sanhao}{\zihao{3}}
+\newcommand{\xiaosan}{\zihao{-3}}
+\newcommand{\sihao}{\zihao{4}}
+\newcommand{\xiaosi}{\zihao{-4}}
+\newcommand{\wuhao}{\zihao{5}}
+\newcommand{\xiaowu}{\zihao{-5}}
+\newcommand{\liuhao}{\zihao{6}}
+\newcommand{\xiaoliu}{\zihao{-6}}
+\newcommand{\qihao}{\zihao{7}}
+\newcommand{\bahao}{\zihao{8}}
 
 \pdsetup{%
 theslide=\arabic{slide}~/~\pageref*{lastslide},
-lf=\href{http://thuthesis.sf.net}{ThuThesis},
-rf=\href{mailto:xueruini@gmail.com}{Xue Ruini},
+lf=\href{http://github.com/xueruini/thuthesis}{ThuThesis},
+rf=\href{mailto:xueruini@gmail.com}{Ruini Xue},
 randomdots,
 dbright=70,
 dmindots=6,dmaxdots=9,
 dminsize=5pt,dmaxsize=20pt,
-logopos={.04\slidewidth,.19\slideheight}}
-
-\graphicspath{{figures/}}
-
-
-\newcommand{\song}{\CJKfamily{song}}    % 宋体
-\newcommand{\fs}{\CJKfamily{fs}}        % 仿宋体
-\newcommand{\kai}{\CJKfamily{kai}}      % 楷体
-\newcommand{\hei}{\CJKfamily{hei}}      % 黑体
-\newcommand{\li}{\CJKfamily{li}}        % 隶书
-\newcommand{\you}{\CJKfamily{you}}      % 幼圆
-
-
-\makeatletter
-\newlength\thu@linespace
-\newcommand{\thu@choosefont}[2]{%
-      \setlength{\thu@linespace}{#2*\real{#1}}%
-      \fontsize{#2}{\thu@linespace}\selectfont}
-\newcommand{\chuhao}[1][\baselinestretch]{\thu@choosefont{#1}{42bp}}
-\newcommand{\xiaochu}[1][\baselinestretch]{\thu@choosefont{#1}{36bp}}
-\newcommand{\yihao}[1][\baselinestretch]{\thu@choosefont{#1}{26bp}}
-\newcommand{\xiaoyi}[1][\baselinestretch]{\thu@choosefont{#1}{24bp}}
-\newcommand{\erhao}[1][\baselinestretch]{\thu@choosefont{#1}{22bp}}
-\newcommand{\xiaoer}[1][\baselinestretch]{\thu@choosefont{#1}{18bp}}
-\newcommand{\sanhao}[1][\baselinestretch]{\thu@choosefont{#1}{16bp}}
-\newcommand{\xiaosan}[1][\baselinestretch]{\thu@choosefont{#1}{15bp}}
-\newcommand{\sihao}[1][\baselinestretch]{\thu@choosefont{#1}{14bp}}
-\newcommand{\banxiaosi}[1][\baselinestretch]{\thu@choosefont{#1}{13bp}}
-\newcommand{\xiaosi}[1][\baselinestretch]{\thu@choosefont{#1}{12bp}}
-\newcommand{\dawu}[1][\baselinestretch]{\thu@choosefont{#1}{11bp}}
-\newcommand{\wuhao}[1][\baselinestretch]{\thu@choosefont{#1}{10.5bp}}
-\newcommand{\xiaowu}[1][\baselinestretch]{\thu@choosefont{#1}{9bp}}
-\newcommand{\liuhao}[1][\baselinestretch]{\thu@choosefont{#1}{7.5bp}}
-\newcommand{\xiaoliu}[1][\baselinestretch]{\thu@choosefont{#1}{6.5bp}}
-\newcommand{\qihao}[1][\baselinestretch]{\thu@choosefont{#1}{5.5bp}}
-\newcommand{\bahao}[1][\baselinestretch]{\thu@choosefont{#1}{5bp}}
-\makeatother
+logopos={.04\slidewidth,.19\slideheight},
+logocmd={\includegraphics[width=1cm]{thu-fig-logo.pdf}}}
 
 \makeatletter
 \def\psRotation#1(#2,#3)#4{%
@@ -90,8 +67,8 @@ logopos={.04\slidewidth,.19\slideheight}}
     \ifdim#1pt>\z@\rput[l]{*0}(0.675,0){#4}\else\rput[l](0.675,0){#4}\fi
   }%
 }
+\makeatother
 
-\newcommand{\ziju}[1][2pt]{\renewcommand{\CJKglue}{\hskip #1}}
 \def\thuthesis{\textsc{Thu}\textsc{Thesis}}
 \def\cmd#1{\texttt{\color{DarkBlue}\footnotesize $\backslash$#1}}
 \def\env#1{\texttt{\color{DarkBlue}\footnotesize #1}}
@@ -102,13 +79,6 @@ logopos={.04\slidewidth,.19\slideheight}}
 \newcommand{\wh}{\widehat} 
 \newcommand{\envert}[1]{\left\lvert#1\right\rvert}
 \let\abs=\envert 
-
-% \RecustomVerbatimEnvironment{Verbatim}{Verbatim}%
-%   {frame=single, baselinestretch=1,fontsize=\footnotesize}
-
-% \DefineVerbatimEnvironment{MyVerbatim}{Verbatim}%
-%  {formatcom=\color{DarkViolet},rulecolor=\color{Gray},%
-%   frame=single, baselinestretch=1,fontsize=\footnotesize}
 
 \DefineVerbatimEnvironment{MyVerbatim}{Verbatim}%
   {frame=single, framerule=0.3mm, rulecolor=\color{red!75!green!50!blue}, 
@@ -128,38 +98,36 @@ logopos={.04\slidewidth,.19\slideheight}}
 \renewcommand{\baselinestretch}{1.3}
 
 \begin{document}
-\begin{CJK*}{GBK}{song}
-\def\version{v3.0}
+\def\version{v4.8}
 \title{\hei\Huge ThuThesis~使用向导~\version}
 \author{\fs 薛瑞尼\\[5pt]\texttt{LittleLeo@newsmth}\\[10pt]\li 清华大学~~计算机系~~高性能所}
 \date{\the\year.\the\month.\the\day}
 \maketitle
 
-\pdsetup{logocmd={\includegraphics[scale=0.05]{thu-fig-logo.pdf}}}
-
 \begin{slide}[toc=, bm=]{目录}
 \tableofcontents[type=1, content=sections]
 \end{slide}
 
-
 \section{介绍}
+
 \begin{slide}[]{\TeX{} 是什么？}
-$\mbox{\TeX} = \tau\epsilon\chi$['tek]
-  \begin{itemize}
+\TeX = $\tau\epsilon\chi$['tek]
+\begin{itemize}
   \item 上世纪~70 年代，Stanford 大学~Donald E. Knuth 教授发明
   \item 西方电子排版界的革命
   \item 漂亮、美观、大方、稳定、通用
   \item 特长：公式~~ (其它方面同样出色)
-  \end{itemize}
+\end{itemize}
 \medskip
 
 \centering
-\includegraphics[scale=0.3]{knuth.png}\hspace{2cm}\includegraphics[scale=0.11]{knuth.png}%texbook.eps
+\includegraphics[width=3cm]{knuth.jpg}\hspace{2cm}%
+\includegraphics[width=3cm]{texbook.jpg}
 
 \begin{equation}
-\det\mathbf{K}(t=1,t_1,\dots,t_n)=\sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
-\prod_{i\in I}t_i\prod_{j\in I}(D_j+\lambda_jt_j)\det\mathbf{A}
-^{(\lambda)}(\overline{I}|\overline{I})=0.
+\det\mathbf{K}(t=1,t_1,\dots,t_n) = \sum_{I\in\mathbf{n}}(-1)^{\envert{I}}
+\prod_{i\in I}t_{i} \prod_{j\in I}(D_{j}+\lambda_{j}t_{j})
+\det\mathbf{A}^{(\lambda)}(\overline{I}\|\overline{J})=0.
 \end{equation} 
 \end{slide}
 
@@ -175,7 +143,8 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
 \bigskip
 
 \centering
-\includegraphics[scale=0.2]{lamport.png}\hspace{2cm}\scalebox{2}{\LaTeX}
+\includegraphics[width=3cm]{lamport.jpg}\hspace{2cm}%
+\includegraphics[width=3cm]{latex.jpg}
 \end{slide}
 
 \begin{slide}{\thuthesis{} 是什么？}
@@ -198,19 +167,20 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
   \item 2005~硕士毕业，始有~$\Rightarrow$ \blue{报盘版}
   \item 不断修改更新：$\Rightarrow$ \thuthesis-2.0 (2005/12/20)
   \item 首次融合本科、硕士、博士论文格式：$\Rightarrow$ \thuthesis-2.1 (2006/3/4)
-  \item 如今：\thuthesis-3.0 (2007/05/13)
+  \item 如今：\thuthesis-4.8.1 (2014/12/09)
   \end{itemize}
 \medskip
 
 \centering
-\includegraphics[width=3cm]{knuth.png}\hspace{1cm}%master.eps
-\includegraphics[width=2.6cm]{knuth.png}\\%contents.eps
+\includegraphics[width=3cm]{master-cover.pdf}\hspace{1cm}%
+\includegraphics[width=2.6cm]{master-toc.pdf}\\
 {\footnotesize 封面}\hspace{3.3cm} {\footnotesize 目录}}
 \end{slide}
 
 \begin{slide}{为什么不是~WORD?}
   \begin{itemize}
-  \item MS WORD 是世界上最流行的“字处理软件”，但不是专业的出版软件
+  \item MS WORD 是世界上最流行的“字处理软件”，但不是专业的出版软件\footnote{这是
+      近 10 年前的说法，现在的 Word 非常棒。}
   \item 二进制封闭格式
   \item 所见即所得~(WYSIWYG)
   \item 简单直观、容易上手，适合日常使用、简单文档
@@ -221,7 +191,7 @@ $\mbox{\TeX} = \tau\epsilon\chi$['tek]
   \end{itemize}
   \bigskip
 \centering
-\includegraphics[width=3cm]{knuth.png}% think.eps
+\includegraphics[width=3cm]{thinker.png}
 \end{slide}
 
 \begin{slide}{为什么是~\TeX ?}
@@ -509,7 +479,7 @@ $ ps2pdf thesis.ps
 \documentclass[12pt]{book}  % 声明模板类型以及相关参数
 
 \author{苏东坡}             % 指定作者
-\title{念奴娇 赤壁怀古}     % 指定文章题目
+\title{念奴娇 - 赤壁怀古}     % 指定文章题目
 
 \begin{document}            % 指示正文开始
 \maketitle                  % 创建封面
@@ -533,7 +503,7 @@ $ ps2pdf thesis.ps
   \item \verb|\命令{参数}|\\\pause
 \verb|\textbf{Bold}| \pause $\Rightarrow$ \textbf{Bold}\pause 
   \item \verb|\命令[参数]|\\\pause 
-\verb|\ziju[10pt]|\pause ~$\Rightarrow$ {\ziju[10pt] 增大字距}\pause 
+\verb|\ziju{1}|\pause ~$\Rightarrow$ {\ziju{1} 增大字距}\pause 
   \end{itemize}
 \item[环境] 特殊的命令\\[5pt]\pause 
 
@@ -745,8 +715,8 @@ $ ps2pdf thesis.ps
  \begin{description}
  \item[下载] 
    \begin{itemize}
-   \item \href{http://thuthesis.sf.net}{http://thuthesis.sourceforge.net}
-   \item \href{http://gforge.oss.org.cn/projects/thuthesis/}{http://gforge.oss.org.cn/projects/thuthesis/}
+   \item CTAN
+   \item \href{http://github.com/xueruini/thuthesis}{Github}
    \end{itemize}
  \item[安装]
    \begin{itemize}
@@ -850,13 +820,13 @@ $ ps2pdf thesis.ps
 \end{slide}
 
 \begin{slide}{封面样例~(1)}
-\includegraphics[width=4.5cm]{lamport.png}\hfill%bachelor.eps
-\includegraphics[width=4.5cm]{lamport.png}%master.eps
+\includegraphics[width=4.5cm]{bachelor-cover.pdf}\hfill
+\includegraphics[width=4.5cm]{master-cover.pdf}
 \end{slide}
 
 \begin{slide}{封面样例~(2)}
-\includegraphics[width=4.5cm]{knuth.png}\hfill%doctor.eps
-\includegraphics[width=4.5cm]{knuth.png}%doctore.eps
+\includegraphics[width=4.5cm]{doctor-cover.pdf}\hfill
+\includegraphics[width=4.5cm]{doctor-ecover.pdf}
 \end{slide}
 
 \begin{slide}[method=direct]{字体切换}
@@ -894,11 +864,11 @@ $ ps2pdf thesis.ps
 \end{slide}
 
 \begin{slide}[method=direct]{字号切换}
- \begin{tabular}{lllll}\hline
- \cmd{chuhao}&\cmd{xiaochu}&\cmd{yihao}&\cmd{xiaoyi} &\\
-  \cmd{erhao}&\cmd{xiaoer}&\cmd{sanhao}&\cmd{xiaosan}&\\
- \cmd{sihao}& \cmd{banxiaosi}&\cmd{xiaosi}&\cmd{dawu}&\cmd{wuhao}\\
- \cmd{xiaowu}&\cmd{liuhao}&\cmd{xiaoliu}&\cmd{qihao}& \cmd{bahao}\\\hline
+ \begin{tabular}{llll}\hline
+ \cmd{chuhao}&\cmd{xiaochu}&\cmd{yihao}&\cmd{xiaoyi}  \\
+ \cmd{erhao} &\cmd{xiaoer} &\cmd{sanhao}&\cmd{xiaosan}\\
+ \cmd{sihao} &\cmd{xiaosi} &\cmd{wuhao}&\cmd{xiaowu}  \\
+ \cmd{liuhao}&\cmd{xiaoliu}&\cmd{qihao}& \cmd{bahao}  \\\hline
  \end{tabular}
 \bigskip 
 
@@ -1072,7 +1042,8 @@ proof & corollary & example & exercise &\\
   \end{description}
 
 \medskip
-\includegraphics[scale=0.25]{thu-lib-logo.pdf}\hspace{2cm}\includegraphics[scale=0.7]{thu-lib-logo.pdf}
+\includegraphics[width=3cm]{thu-text-logo.pdf}\hspace{2cm}%
+\includegraphics[width=3cm]{thu-text-logo.png}
 \end{slide}
 
 \section[toc=深入~\thuthesis]{一步一步掌握~\thuthesis}
@@ -1208,35 +1179,35 @@ thesis/
 \pause
 \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 定义密级
-\secretlevel{[机密]} \secretyear{[2020]}
+\secretlevel{[!red 机密]} \secretyear{[!red 2020]}
 \end{SaveVerbatim}
 \mytwocolumn<2->{\myitem<2->{密级}}
 \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 定义题目
-\ctitle{[!red[清华大学学位论文~\LaTeX\ 模板使用示例文档]]}
-\etitle{[!red[An Introduction to \LaTeX{}]]
-        [!red[Thesis Template of Tsinghua University]]}
+\ctitle{[!red 清华大学学位论文~\LaTeX\ 模板使用示例文档]}
+\etitle{[!red An Introduction to \LaTeX{}]
+        [!red Thesis Template of Tsinghua University]}
   \end{SaveVerbatim}
 \mytwocolumn<3->{\myitem<3->{论文题目}}
   \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 作者和导师信息
-\cauthor{[!red[薛瑞尼]]} 
-\eauthor{[!red[Xue Ruini]]} 
-\csupervisor{[!red[郑纬民教授]]}
-\esupervisor{[!red[Professor Zheng Weimin]]} 
-\cassosupervisor{[!red[[陈文光副教授]]}
-\eassosupervisor{[!red[Chen Wenguang]]} 
-\ccosupervisor{[!red[[某某某教授]]}
-\ecosupervisor{[!red[I have no]]}
+\cauthor{[!red 薛瑞尼]} 
+\eauthor{[!red Xue Ruini]} 
+\csupervisor{[!red 郑纬民教授]}
+\esupervisor{[!red Professor Zheng Weimin]} 
+\cassosupervisor{[!red 陈文光副教授]}
+\eassosupervisor{[!red Chen Wenguang]} 
+\ccosupervisor{[!red 某某某教授]}
+\ecosupervisor{[!red I have no]}
   \end{SaveVerbatim}
 \mytwocolumn<4->{\myitem<4->{作者和导师信息}}
   \begin{SaveVerbatim}[commandchars=!()]{mypause}    
 % 学位与专业信息
-\cdegree{(!red[工学博士])} 
-\edegree{(!red(Doctor of Science))} 
-\cdepartment(!hei!blue[计算机]){(!red[计算机科学与技术系])} 
-\cmajor{(!red[计算机科学与技术])}
-\emajor{(!red(Computer Science and Technology))} 
+\cdegree{(!red 工学博士)} 
+\edegree{(!red Doctor of Science)} 
+\cdepartment[(!hei!blue 计算机)]{(!red 计算机科学与技术系)} 
+\cmajor{(!red 计算机科学与技术)}
+\emajor{(!red Computer Science and Technology)} 
 \end{SaveVerbatim}
 \mytwocolumn<5->{\myitem<5->{学位与专业}\myitem<6->{日期会自动设置为当前日期\\ (\cmd{cdate}~\cmd{edate})}}
 \end{slide}
@@ -1253,8 +1224,8 @@ thesis/
 \mypauseverb<2->{\UseVerbatim{mypause}}
  \begin{SaveVerbatim}[commandchars=!\[\]]{mypause}
 % 中英文关键词
-\ckeywords{\TeX，\LaTeX，CJK，模板，排版，论文}
-\ekeywords{\TeX，\LaTeX，CJK，template，typesetting，thesis}
+\ckeywords{\TeX，\LaTeX，模板，排版，论文}
+\ekeywords{\TeX，\LaTeX，Template，Typesetting，Thesis}
 \end{SaveVerbatim}
 \mypauseverb<3->{\UseVerbatim{mypause}}
 \medskip
@@ -1485,9 +1456,9 @@ Anything as you like...
   \item 从~\thuthesis{} 示例文档入手
   \item 选择一个好编辑器
     \begin{itemize}
-    \item 初级用户：WinEdt$\ldots$ \includegraphics[scale=0.2]{emacs.png}%winedt.eps
-    \item 进阶用户：Vim (+ \LaTeX Suite) \includegraphics[scale=0.16]{emacs.png}%vim.eps
-    \item 高级用户：Emacs (+ AUC\TeX + preview-\LaTeX) \includegraphics[scale=0.16]{emacs.png}
+    \item 入门：WinEdt$\ldots$
+    \item 进阶：Vim (+ \LaTeX Suite) / Sublime Text
+    \item 高级：Emacs (+ AUC\TeX + Ref\TeX + preview-\LaTeX) \includegraphics[scale=0.16]{emacs.png}
     \end{itemize}
   \end{itemize}
 \end{slide}
@@ -1495,11 +1466,10 @@ Anything as you like...
 \begin{slide}[method=file]{求助}
 \mysb{如果遇到问题}
 \begin{itemize}
-\item 阅读文档~(RTFM) 
 \item {\color{blue} google}
+\item 阅读文档
 \item 到~\TeX @newsmth 查找或发文
 \item 到~\href{http://groups.google.com/group/thuthesis}\thuthesis{} Google Group 发问
-\item 给我写信~$\Rightarrow$ {\hei 不推荐}
 \end{itemize}\pause
 \bigskip
 
@@ -1508,7 +1478,7 @@ Anything as you like...
 \item 错误反馈
 \item 改进建议
 \item 出力维护
-\item 感谢：\textbf{\color{blue} oseen, donated, edyfox, Truel}
+\item 感谢：\textbf{\color{blue} alick, oseen, donated, edyfox, Truel}
 \end{itemize}
 \end{slide}
 
@@ -1518,5 +1488,5 @@ Anything as you like...
   \includegraphics[width=5cm]{thanks.pdf}
 \vspace{\stretch{3.5}}
 \end{slide}
-\end{CJK*}
+
 \end{document}
