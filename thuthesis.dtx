@@ -186,7 +186,7 @@
 % 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
 %
 % 本文档将尽量完整的介绍模板的使用方法，如有不清楚之处可以参考示例文档或者根据
-% 第~\ref{sec:howtoask}节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
+% 第~\ref{sec:howtoask} 节说明提问，有兴趣者都可以参与完善此手册，也非常欢迎对代
 % 码的贡献。
 %
 % {\color{blue}\fangsong 模板的作用在于减少论文写作过程中格式调整的时间，前提是遵
@@ -244,7 +244,7 @@
 %   将 \file{thuthesis.cls} 和 \file{thuthesis.cfg} 文件一起发布。
 % \item 使用前阅读文档：\file{thuthesis.pdf}.
 % \end{itemize}
-% 
+%
 % \subsection{准备工作}
 % \label{sec:prepare}
 % 本模板用到的主要宏包包括：
@@ -255,7 +255,7 @@
 %   \pkg{ifxetex} & \pkg{xunicode} & \pkg{CJK}        & \pkg{xeCJK}    & \pkg{CJKpunct} & \pkg{ctex} \\
 %   \pkg{array}   & \pkg{booktabs} & \pkg{longtable}  &  \pkg{amsmath} & \pkg{amssymb}  & \pkg{ntheorem} \\
 %   \pkg{indentfirst} & \pkg{paralist} & \pkg{txfonts} & \pkg{natbib} & \pkg{hyperref}  & \pkg{graphicx} \\
-%   \pkg{subcaption}  &  \pkg{caption} & \pkg{thubib.bst} & & & \\\hline
+%   \pkg{subcaption}  &  \pkg{caption} & \pkg{enumitem} & \pkg{thubib.bst} & & \\\hline
 % \end{tabular}
 % \end{minipage}
 % \end{center}
@@ -1012,11 +1012,11 @@
 % \label{sec:thanks}
 % 感谢这些年来一直陪伴 \thuthesis{} 成长的新老同学，大家的需求是模板前进的动力，
 % 大家的反馈是模板提高的机会。
-% 
+%
 % 本人已离开清华，不能如往日及时升级，热烈欢迎各位
 % 到\href{http://github.com/xueruini/thuthesis/}{Github 主页}贡献，继续为大家服
 % 务。
-% 
+%
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
 %
@@ -1134,7 +1134,8 @@
 %
 % 引用的宏包和相应的定义。
 %    \begin{macrocode}
-\RequirePackage{ifthen,calc}
+\RequirePackage{xparse}
+\RequirePackage{calc}
 %    \end{macrocode}
 %
 % \AmSTeX{} 宏包，用来排出更加漂亮的公式。
@@ -1161,6 +1162,12 @@
 \RequirePackage[labelformat=simple]{subcaption}
 %    \end{macrocode}
 %
+% pdfpages 宏包便于我们插入扫描后的授权页和声明页 PDF 文档。
+%    \begin{macrocode}
+\RequirePackage{pdfpages}
+\includepdfset{fitpaper=true}
+%    \end{macrocode}
+%
 % \changes{v4.8}{2013/03/02}{no need to load indentfirst directly since we use ctex.}
 %
 % 更好的列表环境。
@@ -1169,6 +1176,7 @@
 % \changes{v2.6.4}{2006/10/23}{增加 \texttt{neverdecrease} 选项。}
 %    \begin{macrocode}
 \RequirePackage[neverdecrease]{paralist}
+\RequirePackage{enumitem}
 %    \end{macrocode}
 %
 % raggedbottom，禁止Latex自动调整多余的页面底部空白，并保持脚注仍然在底部。
@@ -1259,7 +1267,6 @@
   breaklinks=true,
   colorlinks=false,
   plainpages=false,
-  pdfpagelabels,
   pdfborder=0 0 0}
 %    \end{macrocode}
 %
@@ -1429,8 +1436,8 @@
 %    \begin{macrocode}
 \renewcommand\normalsize{%
   \@setfontsize\normalsize{12bp}{20bp}
-  \abovedisplayskip=10bp \@plus 2bp \@minus 2bp
-  \abovedisplayshortskip=10bp \@plus 2bp \@minus 2bp
+  \abovedisplayskip=20bp \@plus 2bp \@minus 2bp
+  \abovedisplayshortskip=20bp \@plus 2bp \@minus 2bp
   \belowdisplayskip=\abovedisplayskip
   \belowdisplayshortskip=\abovedisplayshortskip}
 %</cls>
@@ -1736,9 +1743,9 @@
 % \changes{v2.6}{2006/06/09}{增加 \cs{floatsep}，\cs{@fptop}，\cs{@fpsep} 和 \cs{@fpbot}。}
 %    \begin{macrocode}
 %<*cls>
-\setlength{\floatsep}{12bp \@plus4pt \@minus1pt}
-\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}
-\setlength{\textfloatsep}{12bp \@plus4pt \@minus2pt}
+\setlength{\floatsep}{20bp \@plus4pt \@minus1pt}
+\setlength{\intextsep}{20bp \@plus4pt \@minus2pt}
+\setlength{\textfloatsep}{20bp \@plus4pt \@minus2pt}
 \setlength{\@fptop}{0bp \@plus1.0fil}
 \setlength{\@fpsep}{12bp \@plus2.0fil}
 \setlength{\@fpbot}{0bp \@plus1.0fil}
@@ -1767,7 +1774,12 @@
 % \changes{v2.5.1}{2006/05/24}{重新定义表格默认字体。}
 % \changes{v2.5.3}{2006/06/07}{不管 caption 出现在什么位置，\cs{aboveskip} 总是出现在标题和浮动体之间的距离。}
 % \changes{v4.3}{2008/03/11}{子图引用时加括号。}
+% \changes{v4.8.2}{2015/06/27}{本科附录图表编号用-不用.（如图A-1，表A-2）。}
 %    \begin{macrocode}
+\ifthu@bachelor
+  \g@addto@macro\appendix{\renewcommand*{\thefigure}{\thechapter-\arabic{figure}}}
+  \g@addto@macro\appendix{\renewcommand*{\thetable}{\thechapter-\arabic{table}}}
+\fi
 \let\old@tabular\@tabular
 \def\thu@tabular{\dawu[1.5]\old@tabular}
 \DeclareCaptionLabelFormat{thu}{{\dawu[1.5]\songti #1~\rmfamily #2}}
@@ -2009,14 +2021,11 @@
 % 最多涉及 4 层，即: x.x.x.x。\par
 % chapter(0), section(1), subsection(2), subsubsection(3)
 % \changes{v3.1}{2007/10/09}{博士论文目录只出现到第 3 级标题即可。}
+% \changes{v4.8.2}{2015/05/21}{硕士博士论文目录只出现到第 3 级标题即可。其他未明确要求。}
 %    \begin{macrocode}
 %<*cls>
 \setcounter{secnumdepth}{3}
-\ifthu@doctor
-  \setcounter{tocdepth}{2}
-\else
-  \setcounter{tocdepth}{3}
-\fi
+\setcounter{tocdepth}{2}
 %    \end{macrocode}
 %
 % 每章标题行前空 6 磅，后空 0 磅。如果使用目录项中英文要使用 Arial，那么就加上 \cs{sffamily}。
@@ -2437,8 +2446,12 @@
       \ignorespaces\yihao[1.55]%
       \renewcommand{\CJKunderlinebasesep}{0.25cm}%
       \renewcommand{\ULthickness}{1.3pt}%
-      \def\CJKunderlinecolor{}%
-      \CJKunderline*{\thu@ctitle}}
+      \ifxetex
+        \xeCJKsetup{underline/format=\color{black}}%
+      \else
+        \def\CJKunderlinecolor{\color{black}}%
+      \fi
+      \CJKunderline*{\thu@ctitle}}%
       \vskip1.3cm
     \else
       \vskip0.8cm
@@ -2487,7 +2500,7 @@
           \setlength{\extrarowheight}{4pt}
           \ifxetex % todo: ugly codes
             \begin{tabular}{p{\thu@title@width}@{}c@{\extracolsep{8pt}}l}
-          \else 
+          \else
             \begin{tabular}{p{\thu@title@width}c@{\extracolsep{4pt}}l}
           \fi
               \thu@put@title{\thu@department@title}  & \thu@title@sep & {\ziju{0.1875}\thu@cdepartment}\\
@@ -2617,7 +2630,7 @@
 % \begin{macro}{\makecover}
 % \changes{v2.1}{2006/02/29}{分成几个小模块来搞，不然这个 macro 太大了，看不过来。}
 %    \begin{macrocode}
-\newcommand{\makecover}{
+\NewDocumentCommand{\makecover}{o}{
   \phantomsection
   \pdfbookmark[-1]{\thu@ctitle}{ctitle}
   \normalsize%
@@ -2645,18 +2658,24 @@
 % \changes{v3.0}{2007/05/12}{本科论文授权图片扫描取消。}
 % \changes{v4.5.2}{2010/05/29}{本科封面和授权说明之间不要空白页。}
 % \changes{v4.6}{2011/05/29}{博士后报告无授权说明。}
+% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文授权说明扫描版(\#36)。}
 %    \begin{macrocode}
     \ifthu@postdoctor\relax\else%
       \ifthu@bachelor\clearpage\else\cleardoublepage\fi%
-      \ifthu@bachelor\thu@authorization@mk\else%
-      \begin{list}{}{%
-        \topsep\z@%
-        \listparindent\parindent%
-        \parsep\parskip%
-        \setlength{\leftmargin}{0.9mm}%
-        \setlength{\rightmargin}{0.9mm}}%
-      \item[]\thu@authorization@mk%
-      \end{list}\fi%
+      \IfNoValueTF{#1}{%
+        \ifthu@bachelor\thu@authorization@mk\else%
+          \begin{list}{}{%
+            \topsep\z@%
+            \listparindent\parindent%
+            \parsep\parskip%
+            \setlength{\leftmargin}{0.9mm}%
+            \setlength{\rightmargin}{0.9mm}}%
+          \item[]\thu@authorization@mk%
+          \end{list}%
+        \fi%
+      }{%
+        \includepdf{#1}%
+      }%
     \fi
   \end{titlepage}
 %    \end{macrocode}
@@ -2807,19 +2826,26 @@
 % \changes{v4.5.2}{2010/09/19}{研究生论文的致谢和声明终于分开了。}
 %    \begin{macrocode}
 %<*cls>
-\newenvironment{ack}{%
+\NewDocumentEnvironment{ack}{o}{%
     \thu@chapter*{\thu@ackname}
   }
 %    \end{macrocode}
 % 声明部分
 % \changes{v3.0}{2007/05/12}{本科论文声明部分图片扫描取消。}
+% \changes{v4.9}{2015/06/05}{使用 pdfpages 宏包支持本硕博论文声明扫描版(\#36)。}
 %    \begin{macrocode}
   {
     \ifthu@postdoctor\relax\else%
-     \thu@chapter*{\thu@declarename}
-     \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
-       {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
-        \thu@backdate\thu@underline[2.5cm]\relax}%
+      \IfNoValueTF{#1}{%
+        \thu@chapter*{\thu@declarename}
+        \par{\xiaosi\parindent2em\thu@declaretext}\vskip2cm
+        {\xiaosi\hfill\thu@signature\thu@underline[2.5cm]\relax%
+         \thu@backdate\thu@underline[2.5cm]\relax}%
+      }{%
+        \includepdf[pagecommand={\thispagestyle{thu@empty}%
+          \phantomsection\addcontentsline{toc}{chapter}{\thu@declarename}%
+        }]{#1}%
+      }%
     \fi
   }
 %</cls>
@@ -2850,7 +2876,7 @@
     {\thu@chapter*[]{\csname list#1name\endcsname}\thu@starttoc{#1}}
     {\thu@chapter*{\csname list#1name\endcsname}\thu@starttoc{#1}}}
 \renewcommand\listoffigures{\thu@listof{figure}}
-\renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
+\renewcommand*\l@figure{\addvspace{6bp}\@dottedtocline{1}{0em}{4em}}
 \renewcommand\listoftables{\thu@listof{table}}
 \let\l@table\l@figure
 %    \end{macrocode}
@@ -3013,10 +3039,16 @@
 %    \end{macrocode}
 % \end{environment}
 %
-% \begin{macro}{\resumeitem}
-% 个人简历里面会出现的以发表文章，在投文章等。
+% 利用 \pkg{enumitem} 宏包引入两个新列表环境 publications 和 achievements，
+% 分别用于个人简历里面会出现的学术论文列表和研究成果列表。
+% publications 环境可以连续出现多次，模板会自动在之间加入空行。
 % \changes{v2.5.1}{2006/05/23}{ft，教务处和研究生院非要搞的不一样！}
 % \changes{v4.8.2}{2015/04/18}{博士后就不提在学期间了，不合适(\#100)}
+% \changes{v4.9}{2015/05/17}{让简历部分更符合格式指南和示例文件(\#122)}
+% \begin{macro}{\resumeitem}
+% \begin{macro}{\researchitem}
+% \begin{environment}{publications}
+% \begin{environment}{achievements}
 %    \begin{macrocode}
 %<*cfg>
 \ifthu@bachelor
@@ -3030,9 +3062,19 @@
 \fi
 %</cfg>
 %<*cls>
-\newcommand{\resumeitem}[1]{\vspace{24pt}{\sihao\heiti\centerline{#1}}\par\vspace{6pt}}
+\newcommand{\resumeitem}[1]{\vspace{24bp}{\sihao\heiti\centerline{#1}}\par\vspace{6bp}}
+\newcommand{\researchitem}[1]{\vspace{32bp}{\sihao\heiti\centerline{#1}}\par\vspace{14bp}}
+\newlist{publications}{enumerate}{1}
+\setlist[publications]{label=[\arabic*],align=left,nosep,itemsep=8bp,
+leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26],after*=\vspace{29bp},resume}
+\newlist{achievements}{enumerate}{1}
+\setlist[achievements]{label=[\arabic*],align=left,nosep,itemsep=8bp,
+leftmargin=10mm,labelsep=!,before*=\xiaosi[1.26]}
 %</cls>
 %    \end{macrocode}
+% \end{environment}
+% \end{environment}
+% \end{macro}
 % \end{macro}
 %
 % \subsubsection{书脊}
@@ -3160,7 +3202,6 @@
   breaklinks=true,
   linkcolor=blue,
   plainpages=false,
-  pdfpagelabels,
   pdfborder=0 0 0}
 \RequirePackage{url}
 \RequirePackage{indentfirst}
